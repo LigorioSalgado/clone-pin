@@ -1,0 +1,50 @@
+{%  extends "base.html" %}
+{%block title%}Signup{%endblock%}
+{%block content%}
+
+    <div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<h2>Sign up</h2>
+					<div class="fh5co-spacer fh5co-spacer-sm"></div>
+					<form action="{% url 'landing:sign' %}" method="POST">
+                        {% csrf_token %}
+						<div class="row">
+							<div class="col-md-12">
+                            {{sign.username.errors}}
+								<div class="form-group">
+									{{sign.username}}
+								</div>
+							</div>
+							<div class="col-md-12">
+                                {{sign.email.errors}}
+								<div class="form-group">
+									{{sign.email}}
+							    </div>
+							</div>
+							<div class="col-md-12">
+                                {{sign.password.errors}}
+								<div class="form-group">
+									{{sign.password}}
+								</div>
+							</div>
+                            <div class="col-md-12">
+                                {{sign.confirm_password.errors}}
+								<div class="form-group">
+									{{sign.confirm_password}}
+								</div>
+							</div>
+                            <div class="col-md-12">								
+								<div class="form-group">
+									<input type="submit" class="btn btn-primary" value="Register">
+								</div>
+							</div>
+						</div>
+					</form>
+					
+				</div>
+        		
+        	</div>
+
+
+
+{%endblock%}
