@@ -15,21 +15,17 @@ def login():
 
 
 def signup(request):
-
+    form = SignupForm(request.POST or None)
     if request.method == 'POST':
-        form = SignupForm(request.POST)
+        
         print(form.is_valid())
         if form.is_valid():
             form.cleaned_data.pop('confirm_password', None)
             user = User.objects.create_user(**form.cleaned_data)
             user.save()
             return redirect("landing:index")
-        else:
-            return HttpResponse("Error en el formulario")
-    else:
-        sign = SignupForm()
-
-        return render(request,'landing/sign.html',{'sign':sign})
+    
+    return render(request,'landing/sign.html',{'sign':form})
             
     
 

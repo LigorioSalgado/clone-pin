@@ -9,26 +9,27 @@
 					<form action="{% url 'landing:sign' %}" method="POST">
                         {% csrf_token %}
 						<div class="row">
+							{{ sign.non_field_errors }}
 							<div class="col-md-12">
-                            {{sign.username.errors}}
+                    
 								<div class="form-group">
 									{{sign.username}}
 								</div>
 							</div>
 							<div class="col-md-12">
-                                {{sign.email.errors}}
+                                
 								<div class="form-group">
 									{{sign.email}}
 							    </div>
 							</div>
 							<div class="col-md-12">
-                                {{sign.password.errors}}
+                                
 								<div class="form-group">
 									{{sign.password}}
 								</div>
 							</div>
                             <div class="col-md-12">
-                                {{sign.confirm_password.errors}}
+                               
 								<div class="form-group">
 									{{sign.confirm_password}}
 								</div>
@@ -44,6 +45,7 @@
 				</div>
         		
         	</div>
+
 
 
 
