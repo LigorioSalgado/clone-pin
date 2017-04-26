@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Login{%endblock%}
+
+{%block content %}
+ <div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<h2>Login</h2>
+					<div class="fh5co-spacer fh5co-spacer-sm"></div>
+					<form action="{% url 'landing:login' %}" method="POST">
+                        {% csrf_token %}
+						<div class="row">
+							{{ login.non_field_errors }}
+							<div class="col-md-12">
+                    
+								<div class="form-group">
+									{{login.username}}
+                                    {{login.username.errors}}
+								</div>
+							</div>
+							
+							<div class="col-md-12">
+                                
+								<div class="form-group">
+									{{login.password}}
+								</div>
+							</div>
+                    
+                            <div class="col-md-12">								
+								<div class="form-group">
+									<input type="submit" class="btn btn-primary" value="Login">
+								</div>
+							</div>
+						</div>
+					</form>
+					
+				</div>
+        		
+        	</div>
+
+{%endblock%}
