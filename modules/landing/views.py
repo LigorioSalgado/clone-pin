@@ -1,15 +1,14 @@
 from django.shortcuts import render,redirect
-from .forms import SignupForm,LoginForm
+from .forms import SignupForm,LoginForm,ImageUploadForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,logout as salir,login as iniciar
 from django.http import HttpResponse
+from django.conf import settings
 # Create your views here.
 
 def index(request):
 
     return render(request, 'landing/index.html',{'request':request})
-
-
 
 def login(request):
     form = LoginForm(request.POST or None)
@@ -46,4 +45,23 @@ def signup(request):
 def logout(request):
     salir(request)
     return redirect("landing:index")
+
+def uploadImage(request):
+    if request.method == "POST":
+        print("En post")
+        form = ImageUploadForm(request.POST,request.FILES)
+        print(request.FILES)
+        print(form.is_valid())
+        print(settings.MEDIA_ROOT)
+        if form.is_valid():
+            imagen = form.save(commit=False)
+            imagen.usuario = request.user
+            imagen.save()
+            print(imagen)
+            return redirect("landing:index")
+    else:
+        form = ImageUploadForm()
+        return render(request,'landing/form_imagen.html',{'form':form})
+
+
     

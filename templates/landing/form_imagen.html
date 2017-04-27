@@ -1,0 +1,39 @@
+{%extends "base.html"%}
+{%block title%}Register Image{% endblock %}
+{%block content%}
+    <div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<h2>Upload your image</h2>
+					<div class="fh5co-spacer fh5co-spacer-sm"></div>
+					<form action="{% url 'landing:uploadImage' %}" method="POST" enctype="multipart/form-data" >
+                        {% csrf_token %}
+						<div class="row">
+							{{ form.non_field_errors }}
+							<div class="col-md-12">
+                    
+								<div class="form-group">
+									{{form.descripcion}}
+    								</div>
+							</div>
+							
+							<div class="col-md-12">
+                                
+								<div class="form-group">
+									{{form.imagen}}
+								</div>
+							</div>
+                           
+                    
+                            <div class="col-md-12">								
+								<div class="form-group">
+									<input type="submit" class="btn btn-primary" value="Upload">
+								</div>
+							</div>
+						</div>
+					</form>
+					
+				</div>
+        		
+        	</div>
+
+{%endblock%}
