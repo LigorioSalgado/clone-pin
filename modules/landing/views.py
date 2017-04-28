@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .forms import SignupForm,LoginForm,ImageUploadForm
-from django.contrib.auth.models import User
+#rom django.contrib.auth.models import User
+from modules.users.models import User
 from django.contrib.auth import authenticate,logout as salir,login as iniciar
 from django.http import HttpResponse
 from django.conf import settings
@@ -17,7 +18,7 @@ def login(request):
     if request.method == "POST":
         if form.is_valid():
             user = authenticate(
-                username=form.cleaned_data['username'],
+                email=form.cleaned_data['email'],
                 password=form.cleaned_data['password']
                 )
             if user is not None:

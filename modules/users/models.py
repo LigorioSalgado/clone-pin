@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.postgres.fields import JSONField
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
 
@@ -38,7 +37,7 @@ class User(AbstractBaseUser, PermissionsMixin, models.Model):
     amaterno = models.CharField(max_length=25)
     direccion = models.TextField()
     telefono = models.CharField(max_length=22)
-    email = models.CharField(unique=True, max_length=50)
+    email = models.EmailField(unique=True, max_length=50)
     genero = models.CharField(choices=(('M','Mujer'),('H','Hombre')), max_length=16,blank=True)
     fecha_nacimiento = models.DateField(blank=True, null=True)
     pic_profile = models.ImageField(upload_to="")

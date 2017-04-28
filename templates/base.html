@@ -48,7 +48,7 @@
 		<a href="#" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">Menu <i class="icon-cross"></i> </a>
 		<h1 class="fh5co-logo"><a class="navbar-brand" href="{% url 'landing:index' %}">Clone Pin</a></h1>
 		{% if request.user.is_authenticated %}
-		<h3>¡Hola! {{request.user.username}}</h3>
+		<h3>¡Hola! {{request.user.email}}</h3>
 		{%endif%}
 		<ul>
 			<li class="active"><a href="{% url 'landing:index' %}">Home</a></li>
